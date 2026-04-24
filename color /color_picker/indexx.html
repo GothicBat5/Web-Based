@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset = "UTF-8">
+  <meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
+  <title>Galaxy - Color - Picker - Studio</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel = "stylesheet" href = "style.css">
+</head>
+<body>
+
+  <header>
+    <div class = "logo-dot"></div>
+    <h1>Color Picker Studio</h1>
+    <span>v2.0</span>
+  </header>
+
+  <main>
+
+    <div class = "panel-left">
+      <div class = "panel-header">
+        <span class = "panel-label">Image Canvas</span>
+        <span class = "badge" id = "canvasBadge">No image loaded</span>
+        <button id = "clearImgBtn" onclick = "clearImage()">✕ Remove</button>
+      </div>
+
+      <div class = "canvas-area">
+        <!-- Drop zone (shown when no image is loaded) -->
+        <div id = "dropZone">
+          <div class = "drop-icon">🖼</div>
+          <div class = "drop-title">Drop your image here</div>
+          <div class = "drop-sub">PNG, JPG, GIF, WEBP supported<br>or click to browse</div>
+          <button class = "drop-btn" onclick="document.getElementById('fileInput').click()">
+            Browse File
+          </button>
+        </div>
+
+        <!-- Canvas (shown after an image loads) -->
+        <div id = "canvasWrap">
+          <canvas id = "canvas"></canvas>
+          <div id = "magnifier">
+            <canvas id = "magCanvas" width = "90" height = "90"></canvas>
+            <div class = "crosshair"></div>
+          </div>
+        </div>
+      </div>
+
+      <input type = "file" id = "fileInput" accept = "image/*">
+    </div>
+
+    <div class = "panel-right">
+
+      <div class = "section">
+        <div class = "section-title">Live Preview</div>
+        <div class = "color-swatch-large" id = "mainSwatch">
+          <span class = "swatch-hint" id = "swatchHint">Hover over image to preview</span>
+        </div>
+      </div>
+
+      <div class = "section">
+        <div class = "section-title">Color Values</div>
+        <div class = "color-values">
+          <div class = "value-card span2" onclick="copyValue('hex')">
+            <div class = "value-label">HEX</div>
+            <div class = "value-text" id="hexVal">—</div>
+            <span class = "copy-icon">⎘</span>
+          </div>
+
+          <div class = "value-card" onclick="copyValue('rgb')">
+            <div class = "value-label">RGB</div>
+            <div class = "value-text" id = "rgbVal">—</div>
+            <span class = "copy-icon">⎘</span>
+          </div>
+          <div class = "value-card" onclick = "copyValue('hsl')">
+            <div class = "value-label">HSL</div>
+            <div class = "value-text" id = "hslVal">—</div>
+            <span class = "copy-icon">⎘</span>
+          </div>
+        </div>
+      </div>
+
+      <div class = "section">
+        <div class = "section-title">RGB Breakdown</div>
+        <div class = "rgb-bars">
+          <div class = "rgb-bar-row">
+            <span class = "rgb-bar-label">R</span>
+            <div class = "rgb-bar-track">
+
+      <div class = "rgb-bar-fill" id = "barR" style = "width:0%; background:#FF0505"></div>
+            </div>
+            <span class = "rgb-bar-value" id="valR">0</span>
+          </div>
+          <div class = "rgb-bar-row">
+            <span class = "rgb-bar-label">G</span>
+            <div class = "rgb-bar-track">
+
+      <div class = "rgb-bar-fill" id = "barG" style = "width:0%; background:#00FF00"></div>
+            </div>
+            <span class = "rgb-bar-value" id = "valG">0</span>
+          </div>
+          <div class = "rgb-bar-row">
+            <span class = "rgb-bar-label">B</span>
+            <div class = "rgb-bar-track">
+
+      <div class = "rgb-bar-fill" id = "barB" style = "width:0%; background:#0000FF"></div>
+            </div>
+            <span class = "rgb-bar-value" id="valB">0</span>
+          </div>
+        </div>
+      </div>
+
+      <div class = "section">
+        <div class = "section-title">Tints &amp; Shades</div>
+        <div class = "tints-row" id = "tintsRow">
+          <div style = "font-size:0.7rem;color:var(--muted);font-family:'DM Mono',monospace">
+            Pick a color to generate palette
+          </div>
+        </div>
+      </div>
+
+      <div class = "section">
+        <div class = "section-title">Picked Colors</div>
+        <div id = "historyGrid" class = "history-grid">
+          <div class = "history-empty">No colors picked yet</div>
+        </div>
+      </div>
+
+      <button class = "clear-btn" onclick = "clearHistory()">⌫ Clear History</button>
+
+    </div>
+  </main>
+
+  <div class = "copied-toast" id = "toast">Copied!</div>
+
+  <script src = "logic_app.js"></script>
+</body>
+</html>
