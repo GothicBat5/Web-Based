@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset = "UTF-8">
+  <meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
+
+  <title>Select Flavor</title>
+
+  <link rel = "preconnect" href = "https://fonts.googleapis.com">
+  <link rel = "preconnect" href = "https://fonts.gstatic.com" crossorigin>
+
+  <link href = "https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel = "stylesheet" href = "colorcode.css">
+</head>
+<body>
+
+  <div class = "orb orb-1"></div>
+  <div class = "orb orb-2"></div>
+  <div class = "orb orb-3"></div>
+
+  <div id = "ripple-container"></div>
+
+  <div class = "card">
+    <div class = "card-header">
+      <span class = "label-tag">CHOOSE A FLAVOR!</span>
+      <h1>Select a Flavor</h1>
+      <p class = "subtitle">One taste to rule them all.</p>
+    </div>
+
+    <div class = "options">
+
+      <div class = "option" data-flavor="bubble">
+        <div class = "flavor-icon">🫧</div>
+        <div class = "flavor-info">
+          <div class = "flavor-name bubble">Bubble Gum</div>
+          <div class = "flavor-note">Sweet & playful</div>
+        </div>
+        <div class = "check-wrap">
+          <div class = "check">
+            <svg viewBox = "0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap = "round" stroke-linejoin="round">
+              <polyline points = "20 6 9 17 4 12"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class = "option" data-flavor = "blueberry">
+        <div class = "flavor-icon">🫐</div>
+        <div class = "flavor-info">
+          <div class = "flavor-name blueberry">Blueberry</div>
+          <div class = "flavor-note">Bold & tangy</div>
+        </div>
+        <div class = "check-wrap">
+          <div class = "check">
+            <svg viewBox = "0 0 24 24" 
+            fill = "none" stroke = "currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class = "option" data-flavor = "purple">
+        <div class = "flavor-icon">🍇</div>
+        <div class = "flavor-info">
+          <div class = "flavor-name purple">Purple Jam</div>
+          <div class = "flavor-note">Rich & dreamy</div>
+        </div>
+        <div class = "check-wrap">
+          <div class = "check">
+            <svg viewBox = "0 0 24 24" 
+            fill = "none" stroke ="currentColor" stroke-width = "3" stroke-linecap = "round" stroke-linejoin = "round">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class = "option selected" data-flavor = "raspberry">
+        <div class = "flavor-icon">🍓</div>
+        <div class = "flavor-info">
+          <div class = "flavor-name raspberry">Raspberry</div>
+          <div class = "flavor-note">Sharp & electric</div>
+        </div>
+        <div class = "check-wrap">
+          <div class = "check">
+            <svg viewBox="0 0 24 24" 
+            fill = "none" stroke = "currentColor" stroke-width="3" stroke-linecap = "round" stroke-linejoin="round">
+              <polyline points = "20 6 9 17 4 12"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <button class = "confirm-btn" id = "confirmBtn">
+      <span>Confirm Choice</span>
+      <svg viewBox = "0 0 24 24" 
+      fill = "none" 
+      stroke = "currentColor" stroke-width = "2.5" stroke-linecap = "round" stroke-linejoin="round">
+        <line  x1 = "5" y1 = "12" x2 = "19" y2 = "12"/>
+        <polyline points = "12 5 19 12 12 19"/>
+      </svg>
+    </button>
+  </div>
+
+  <script src = "shake.js"></script>
+</body>
+</html>
