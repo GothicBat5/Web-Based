@@ -152,8 +152,7 @@ function updateColor(x, y, pick)
   }
 }
 
-// ── Magnifier loupe ──────────────────────────────────────────
-/**
+/*
  * Positions the loupe relative to the canvas element (not the wrapper)
  * so it correctly accounts for object-fit letterbox padding.
  */
@@ -219,14 +218,14 @@ function rgbToHsl(r, g, b)
 function generateTints(r, g, b) 
 {
 
-  const row   = document.getElementById('tintsRow');
+  const row = document.getElementById('tintsRow');
   const steps = [0.1, 0.2, 0.35, 0.5, 0.65, 0.8, 0.9];
   row.innerHTML = '';
 
   // Shades (darkest → base)
   for (let i = steps.length - 1; i >= 0; i--) 
   {
-    const f   = steps[i];
+    const f = steps[i];
     const hex = toHex(Math.round(r * f), Math.round(g * f), Math.round(b * f));
     row.appendChild(makeSwatch(hex, false));
   }
@@ -257,7 +256,7 @@ function makeSwatch(hex, isBase)
 
   if (isBase) 
   {
-    el.style.outline       = '2px solid white';
+    el.style.outline = '2px solid white';
     el.style.outlineOffset = '2px';
   }
 
@@ -273,7 +272,7 @@ function clearImage()
   imgLoaded = false;
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   canvasWrap.classList.remove('visible');
-  dropZone.style.display  = '';
+  dropZone.style.display = '';
   magnifier.style.display = 'none';
 
   canvasBadge.textContent = 'No image loaded';
