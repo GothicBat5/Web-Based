@@ -38,13 +38,13 @@ class Ball {
     constructor(x, y) 
     {
         this.position = new Vector(x, y);
-        this.velocity = new Vector(
-            (Math.random() - 0.5) * 200,
-            Math.random() * -200
-        );
-
+        
+        this.velocity = new Vector((Math.random() - 0.5) * 200, Math.random() * -200);
+        
         this.radius = 10 + Math.random() * 10;
+        
         this.gravity = new Vector(0, 500);
+        
         this.friction = 0.7;
     }
 
@@ -97,7 +97,7 @@ canvas.addEventListener("mouseup", (e) => {
 
     const endPos = new Vector(e.clientX, e.clientY);
 
-    const velocity = new Vector( (endPos.x - startPos.x) * 5,(endPos.y - startPos.y) * 5);
+    const velocity = new Vector((endPos.x - startPos.x) * 5,(endPos.y - startPos.y) * 5);
 
     const ball = new Ball(startPos.x, startPos.y);
     ball.velocity = velocity;
