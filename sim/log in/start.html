@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset = "UTF-8" />
+  <meta name = "viewport" content = "width=device-width, initial-scale = 1.0" />
+  <title>Welcome</title>
+  <link rel = "preconnect" href = "https://fonts.googleapis.com" />
+  <link rel = "preconnect" href = "https://fonts.gstatic.com" crossorigin />
+  <link href = "https://fonts.googleapis.com/css2?family = Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family = DM+Sans:wght@300;400;500&display=swap" rel = "stylesheet" />
+
+  <link rel = "stylesheet" href = "art.css" />
+</head>
+
+<body>
+
+  <div class = "bg-orbs">
+    <div class = "orb orb-1"></div>
+    <div class = "orb orb-2"></div>
+    <div class = "orb orb-3"></div>
+  </div>
+
+  <div class = "grain"></div>
+
+  <main class = "container">
+
+    <aside class = "panel-left">
+      <div class = "brand">
+        <div class = "logo-mark">
+          <span class = "logo-inner"></span>
+        </div>
+        <span class = "brand-name">Orange Orbit Book Collection</span>
+      </div>
+
+      <div class = "panel-copy">
+        <p class = "eyebrow">Your space to think</p>
+        <h1 class = "headline">
+          Books for Free!<br />
+          <em>read like in the past ;-)</em><br />
+          YES BOOKS.
+        </h1>
+        <p class = "subline">No more brainrot, No more screentime, just read naturally.</p>
+      </div>
+
+      <div class = "testimonial">
+        <p class = "quote">"I liked this place for my design. And I hate E-Books"</p>
+        <div class = "testimonial-author">
+          <div class = "avatar">
+            <svg width = "20" height = "20" 
+            viewBox = "0 0 24 24" fill = "none" stroke = "currentColor" stroke-width = "1.8">
+            <circle cx="12" cy="8" r="4"/>
+            <path d = "M4 20c0-4 4-6 8-6s8 2 8 6"/>
+            </svg>
+          </div>
+          <div>
+            <span class = "author-name">Chloe Nazzareno</span>
+            <span class = "author-title">Filmmaker and Zoologist</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <section class = "panel-right">
+      <div class = "auth-card">
+
+        <div class = "tabs" role="tablist">
+          <button class = "tab tab--active" id = "tab-login" role = "tab" aria-selected="true" aria-controls = "form-login">Log in</button>
+          <button class = "tab" id = "tab-signup" role = "tab" aria-selected = "false" aria-controls = "form-signup">Sign up</button>
+          <div class = "tab-slider" aria-hidden = "true"></div>
+        </div>
+
+        <div class = "forms-wrapper">
+
+          <div class = "form-panel active" id = "form-login" role = "tabpanel" aria-labelledby="tab-login">
+            <div class = "social-row">
+            </div>
+
+            <div class = "divider"><span>or</span></div>
+
+            <form id = "loginForm" novalidate>
+              <div class = "field-group">
+                <label for = "login-email" class="label">Email</label>
+                <div class = "input-wrap">
+                  <input type = "email" id = "login-email" class = "input" autocomplete = "email" />
+                </div>
+              </div>
+
+              <div class = "field-group">
+                <div class = "label-row">
+                  <label for = "login-password" class = "label">Password</label>
+                  <a href="#" class = "forgot-link">Forgot password?</a>
+                </div>
+                <div class = "input-wrap">
+                  <input type = "password" id = "login-password" class = "input" placeholder = "••••••••" autocomplete = "current-password" />
+                  <button type = "button" class="toggle-pw" aria-label="Show password">
+                    <svg class = "eye-icon" width="18" height = "18" viewBox = "0 0 24 24" fill = "none" stroke="currentColor" stroke-width="1.8"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx = "12" cy = "12" r = "3"/></svg>
+                  </button>
+                </div>
+              </div>
+
+              <button type = "submit" class="btn-primary">
+                <span class = "btn-label">Log in</span>
+                <span class = "btn-spinner" aria-hidden = "true"></span>
+              </button>
+            </form>
+          </div>
+
+          <div class = "form-panel" id = "form-signup" role = "tabpanel" aria-labelledby = "tab-signup">
+            <div class = "social-row">
+            </div>
+
+            <div class = "divider"><span>or</span></div>
+
+            <form id = "signupForm" novalidate>
+              <div class =" field-group">
+                <label for = "signup-name" class="label">Full name</label>
+                <div class = "input-wrap">
+                  <input type = "text" id = "signup-name" class = "input" placeholder = "Jane Smith" autocomplete="name" />
+                </div>
+              </div>
+
+              <div class = "field-group">
+                <label for = "signup-email" class="label">Email</label>
+                <div class = "input-wrap">
+                  <input type = "email" id = "signup-email" 
+                  class = "input" placeholder = "you@example.com" autocomplete = "email" />
+                </div>
+              </div>
+
+              <div class = "field-group">
+                <label for = "signup-password" class = "label">Password</label>
+                <div class = "input-wrap">
+                  <input type = "password" id = "signup-password" class = "input" placeholder ="Min. 8 characters" autocomplete="new-password" />
+                  <button type="button" class="toggle-pw" aria-label="Show password">
+                    <svg class = "eye-icon" width = "18" height = "18" viewBox = "0 0 24 24" fill = "none" stroke = "currentColor" stroke-width = "1.8">
+                      <path d = "M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                      <circle cx = "12" cy = "12" r = "3"/>
+                    </svg>
+                  </button>
+                </div>
+                <div class = "strength-bar">
+                  <div class = "strength-fill"></div>
+                </div>
+                <span class = "strength-label"></span>
+              </div>
+
+              <div class = "checkbox-row">
+                <label class = "checkbox-label">
+                  <input type = "checkbox" class="checkbox-input" id="terms" />
+                  <span class = "checkbox-custom"></span>
+                  <span class = "checkbox-text">I agree to the <a href="#" class="inline-link">Terms</a> &amp; <a href = "#" class = "inline-link">Privacy</a></span>
+                </label>
+              </div>
+
+              <button type = "submit" class = "btn-primary">
+                <span class = "btn-label">Create account</span>
+                <span class = "btn-spinner" aria-hidden = "true"></span>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <div class = "success-state" aria-live="polite" hidden>
+          <div class = "success-icon">
+            <svg width = "28" height = "28" viewBox = "0 0 24 24" fill = "none" stroke = "currentColor" stroke-width="2" stroke-linecap = "round" stroke-linejoin = "round">
+              <polyline points = "20 6 9 17 4 12"/>
+            </svg>
+          </div>
+          <h3 class = "success-title">WELCOME!</h3>
+          <p class = "success-sub">Start reading books</p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <script src = "wipe.js"></script>
+</body>
+</html>
