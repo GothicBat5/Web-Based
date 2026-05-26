@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Friend</title>
+
+    <link rel="stylesheet" href="furr.css">
+</head>
+<body>
+
+
+<div class="scene">
+      <svg id="cat" width="320" height="320" viewBox="0 0 400 400" role="img">
+    <title>Cat friend</title>
+    <defs>
+      <radialGradient id="bodyGrad" cx="45%" cy="40%" r="55%">
+        <stop offset="0%" stop-color="#ffbe76"/>
+        <stop offset="100%" stop-color="#e8870a"/>
+      </radialGradient>
+      <radialGradient id="eyeGrad" cx="40%" cy="35%" r="60%">
+        <stop offset="0%" stop-color="#ffffff"/>
+        <stop offset="100%" stop-color="#dde8f0"/>
+      </radialGradient>
+      <radialGradient id="irisGrad" cx="35%" cy="35%" r="65%">
+        <stop offset="0%" stop-color="#7ed321"/>
+        <stop offset="60%" stop-color="#4a9a00"/>
+        <stop offset="100%" stop-color="#2d6200"/>
+      </radialGradient>
+    </defs>
+
+    <!-- Tail (behind body) -->
+    <path d="M290 310 Q360 280 370 210 Q380 155 340 160 Q310 163 308 200" fill="none" stroke="#e8870a" stroke-width="22" stroke-linecap="round"/>
+    <path d="M290 310 Q360 280 370 210 Q380 155 340 160 Q310 163 308 200" fill="none" stroke="#ffbe76" stroke-width="12" stroke-linecap="round"/>
+
+    <!-- Left ear outer -->
+    <polygon points="108,148 135,55 180,148" fill="#e8870a" stroke="#c97100" stroke-width="2" stroke-linejoin="round"/>
+    <!-- Left ear inner -->
+    <polygon points="120,140 140,80 168,140" fill="#f5a0b0" stroke="none"/>
+
+    <!-- Right ear outer -->
+    <polygon points="220,148 265,55 292,148" fill="#e8870a" stroke="#c97100" stroke-width="2" stroke-linejoin="round"/>
+    <!-- Right ear inner -->
+    <polygon points="232,140 260,80 280,140" fill="#f5a0b0" stroke="none"/>
+
+    <!-- Body/head -->
+    <circle cx="200" cy="210" r="125" fill="url(#bodyGrad)" stroke="#c97100" stroke-width="2.5"/>
+
+    <!-- Fur texture lines on forehead -->
+    <path d="M185 115 Q190 105 195 115" fill="none" stroke="#c97100" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+    <path d="M200 110 Q200 98 200 110" fill="none" stroke="#c97100" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+    <path d="M215 115 Q210 105 205 115" fill="none" stroke="#c97100" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+
+    <!-- Forehead stripe -->
+    <path d="M193 118 Q200 108 207 118" fill="none" stroke="#c97100" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+
+    <!-- LEFT EYE -->
+    <ellipse cx="158" cy="195" rx="30" ry="27" fill="url(#eyeGrad)" stroke="#b0bec5" stroke-width="1.5"/>
+    <!-- iris left -->
+    <ellipse id="irisL" cx="158" cy="195" rx="19" ry="22" fill="url(#irisGrad)"/>
+    <!-- pupil left (vertical slit) -->
+    <ellipse id="leftPupil" cx="158" cy="195" rx="7" ry="14" fill="#1a1a1a"/>
+    <!-- eye shine left -->
+    <circle id="shineL" cx="163" cy="189" r="5" fill="white" opacity="0.85"/>
+    <circle id="shineL2" cx="153" cy="201" r="2.5" fill="white" opacity="0.4"/>
+    <!-- eyelid top left -->
+    <path d="M128 193 Q158 170 188 193" fill="#ffbe76" stroke="none"/>
+    <path d="M130 194 Q158 173 186 194" fill="none" stroke="#c97100" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- RIGHT EYE -->
+    <ellipse cx="242" cy="195" rx="30" ry="27" fill="url(#eyeGrad)" stroke="#b0bec5" stroke-width="1.5"/>
+    <!-- iris right -->
+    <ellipse id="irisR" cx="242" cy="195" rx="19" ry="22" fill="url(#irisGrad)"/>
+    <!-- pupil right (vertical slit) -->
+    <ellipse id="rightPupil" cx="242" cy="195" rx="7" ry="14" fill="#1a1a1a"/>
+    <!-- eye shine right -->
+    <circle id="shineR" cx="247" cy="189" r="5" fill="white" opacity="0.85"/>
+    <circle id="shineR2" cx="237" cy="201" r="2.5" fill="white" opacity="0.4"/>
+    <!-- eyelid top right -->
+    <path d="M212 193 Q242 170 272 193" fill="#ffbe76" stroke="none"/>
+    <path d="M214 194 Q242 173 270 194" fill="none" stroke="#c97100" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- Nose -->
+    <path d="M192 248 L200 238 L208 248 Q200 256 192 248Z" fill="#f06292" stroke="#c2185b" stroke-width="1"/>
+
+    <!-- Mouth -->
+    <path d="M200 255 Q186 272 172 262" fill="none" stroke="#8d4c2f" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M200 255 Q214 272 228 262" fill="none" stroke="#8d4c2f" stroke-width="2.5" stroke-linecap="round"/>
+
+    <!-- Chin/muzzle area -->
+    <ellipse cx="200" cy="268" rx="28" ry="16" fill="#ffe0b2" opacity="0.55"/>
+
+    <!-- Whiskers left -->
+    <line x1="162" y1="254" x2="75" y2="240" stroke="#6d4c41" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+    <line x1="160" y1="262" x2="72" y2="262" stroke="#6d4c41" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+    <line x1="162" y1="270" x2="77" y2="280" stroke="#6d4c41" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+
+    <!-- Whiskers right -->
+    <line x1="238" y1="254" x2="325" y2="240" stroke="#6d4c41" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+    <line x1="240" y1="262" x2="328" y2="262" stroke="#6d4c41" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+    <line x1="238" y1="270" x2="323" y2="280" stroke="#6d4c41" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+
+    <!-- Cheek blush -->
+    <ellipse cx="140" cy="270" rx="22" ry="12" fill="#f48fb1" opacity="0.3"/>
+    <ellipse cx="260" cy="270" rx="22" ry="12" fill="#f48fb1" opacity="0.3"/>
+  </svg>
+    <object id="catObject" data="cat.svg" type="image/svg+xml"></object>
+
+    <div id="message">Poke me!</div>
+
+</div>
+
+<script src="meow.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #161616;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+}
+
+.scene {
+  text-align: center;
+}
+
+#cat {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  display: block;
+  margin: 0 auto;
+}
+
+#message {
+  margin-top: 15px;
+  color: white;
+  font-size: 1.2rem;
+}
