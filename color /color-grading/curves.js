@@ -1,18 +1,17 @@
 // curves.js — RGB Tone Curves with draggable control points
 (function () {
-    const W = 200;
-    const H = 200;
+    const W = 220;
+    const H = 220;
     const POINT_RADIUS = 6;
 
     const channels = ["rgb", "r", "g", "b"];
     const channelColors = {
-        rgb: { line: "#ffffff", bg: "#1e1e1e", point: "#ffffff" },
+        rgb: { line: "#e8e8e8", bg: "#1a1a1e", point: "#ffffff" },
         r: { line: "#e05555", bg: "#1e1212", point: "#e05555" },
-        g: { line: "#55cc55", bg: "#121e12", point: "#55cc55" },
+        g: { line: "#44cc66", bg: "#111e14", point: "#44cc66" },
         b: { line: "#4488ee", bg: "#12121e", point: "#4488ee" },
     };
 
-    // Default control points per channel: input -> output (0..1)
     function defaultPoints() 
     {
         return [{ x: 0, y: 0 }, { x: 1, y: 1 }];
@@ -21,16 +20,12 @@
     const state = {
         activeChannel: "rgb",
         curves: {
-            rgb: defaultPoints(),
-            r: defaultPoints(),
-            g: defaultPoints(),
-            b: defaultPoints(),
+            rgb: defaultPoints(), r: defaultPoints(),
+            g: defaultPoints(), b: defaultPoints(),
         },
         luts: {
-            rgb: buildLUT(defaultPoints()),
-            r: buildLUT(defaultPoints()),
-            g: buildLUT(defaultPoints()),
-            b: buildLUT(defaultPoints()),
+            rgb: buildLUT(defaultPoints()), r: buildLUT(defaultPoints()),
+            g: buildLUT(defaultPoints()), b: buildLUT(defaultPoints()),
         },
     };
 
@@ -52,59 +47,61 @@
     function cubicInterp(pts, t) 
     {
         if (pts.length === 1) return pts[0].y;
+
         if (t <= pts[0].x) return pts[0].y;
+
         if (t >= pts[pts.length - 1].x) return pts[pts.length - 1].y;
 
-        // Find segment
         let i = 0;
         while (i < pts.length - 2 && pts[i + 1].x < t) i++;
-
         const p0 = pts[Math.max(0, i - 1)];
         const p1 = pts[i];
         const p2 = pts[i + 1];
         const p3 = pts[Math.min(pts.length - 1, i + 2)];
-
         const t0 = (t - p1.x) / (p2.x - p1.x);
-
-        // Catmull-Rom
         const m1 = (p2.y - p0.y) / (p2.x - p0.x + 1e-10);
         const m2 = (p3.y - p1.y) / (p3.x - p1.x + 1e-10);
         const dx = p2.x - p1.x;
-
         return (
-            (2 * t0 * t0 * t0 - 3 * t0 * t0 + 1) * p1.y +
-            (t0 * t0 * t0 - 2 * t0 * t0 + t0) * m1 * dx +
-            (-2 * t0 * t0 * t0 + 3 * t0 * t0) * p2.y +
-            (t0 * t0 * t0 - t0 * t0) * m2 * dx
+            (2*t0*t0*t0 - 3*t0*t0 + 1) * p1.y +
+            (t0*t0*t0 - 2*t0*t0 + t0) * m1 * dx +
+            (-2*t0*t0*t0 + 3*t0*t0) * p2.y +
+            (t0*t0*t0 - t0*t0) * m2 * dx
         );
     }
 
-    function clamp01(v) { return Math.max(0, Math.min(1, v)); }
+    function clamp01(v) 
+    { 
+        return v < 0 ? 0 : v > 1 ? 1 : v; 
+    }
+
 
     function drawCurve() 
     {
         const ch = state.activeChannel;
         const col = channelColors[ch];
         const pts = state.curves[ch];
+        const lut = state.luts[ch];
 
         curveCtx.fillStyle = col.bg;
         curveCtx.fillRect(0, 0, W, H);
 
-        // Grid
-        curveCtx.strokeStyle = "rgba(255,255,255,0.07)";
+        curveCtx.strokeStyle = "rgba(255,255,255,0.06)";
         curveCtx.lineWidth = 1;
 
         for (let i = 1; i < 4; i++) 
         {
             const v = (i / 4) * W;
             curveCtx.beginPath();
-            curveCtx.moveTo(v, 0); curveCtx.lineTo(v, H);
-            curveCtx.moveTo(0, v); curveCtx.lineTo(W, v);
+            curveCtx.moveTo(v, 0); 
+            curveCtx.lineTo(v, H);
+            curveCtx.moveTo(0, v); 
+            curveCtx.lineTo(W, v);
             curveCtx.stroke();
         }
 
-        // Diagonal reference
-        curveCtx.strokeStyle = "rgba(255,255,255,0.1)";
+
+        curveCtx.strokeStyle = "rgba(255,255,255,0.09)";
         curveCtx.lineWidth = 1;
         curveCtx.setLineDash([4, 4]);
         curveCtx.beginPath();
@@ -112,8 +109,23 @@
         curveCtx.stroke();
         curveCtx.setLineDash([]);
 
-        // Curve line
-        const lut = state.luts[ch];
+
+        curveCtx.beginPath();
+        curveCtx.moveTo(0, H);
+
+        for (let x = 0; x < 256; x++) 
+        {
+            curveCtx.lineTo((x / 255) * W, H - (lut[x] / 255) * H);
+        }
+        curveCtx.lineTo(W, H);
+        curveCtx.closePath();
+        curveCtx.fillStyle = col.line.replace(")", ",0.08)").replace("rgb", "rgba").replace("#", "rgba(").replace(/rgba\(([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2}),0\.08\)/, (_, r, g, b) =>
+            `rgba(${parseInt(r,16)},${parseInt(g,16)},${parseInt(b,16)},0.08)`
+        );
+
+        curveCtx.fillStyle = "rgba(255,255,255,0.03)";
+        curveCtx.fill();
+
         curveCtx.strokeStyle = col.line;
         curveCtx.lineWidth = 2;
         curveCtx.beginPath();
@@ -126,8 +138,8 @@
         }
         curveCtx.stroke();
 
-        // Control points
-        pts.forEach((pt, idx) => {
+ 
+        pts.forEach((pt) => {
             const cx = pt.x * W;
             const cy = H - pt.y * H;
             curveCtx.beginPath();
@@ -142,25 +154,29 @@
 
     let draggingIdx = -1;
 
-    function getPos(e) {
+    function getPos(e) 
+    {
         const rect = curveCanvas.getBoundingClientRect();
+        const scaleX = W / rect.width;
+        const scaleY = H / rect.height;
         const clientX = e.touches ? e.touches[0].clientX : e.clientX;
         const clientY = e.touches ? e.touches[0].clientY : e.clientY;
         return {
-            x: clamp01((clientX - rect.left) / W),
-            y: clamp01(1 - (clientY - rect.top) / H),
+            x: clamp01(((clientX - rect.left) * scaleX) / W),
+            y: clamp01(1 - ((clientY - rect.top) * scaleY) / H),
         };
     }
 
     function hitTest(pos) 
     {
         const pts = state.curves[state.activeChannel];
+        const threshold = (POINT_RADIUS * 2.2) / W;
 
         for (let i = 0; i < pts.length; i++) 
         {
             const dx = pos.x - pts[i].x;
             const dy = pos.y - pts[i].y;
-            if (Math.sqrt(dx * dx + dy * dy) < POINT_RADIUS / W * 1.8) return i;
+            if (Math.sqrt(dx * dx + dy * dy) < threshold) return i;
         }
         return -1;
     }
@@ -172,29 +188,27 @@
         const hit = hitTest(pos);
         const pts = state.curves[state.activeChannel];
 
-        if (hit !== -1) {
+        if (hit !== -1) 
+        {
             draggingIdx = hit;
         } 
-        else {
-            // Add new point (not on endpoints)
-            if (pos.x > 0.02 && pos.x < 0.98) 
-            {
-                pts.push({ x: pos.x, y: pos.y });
-                pts.sort((a, b) => a.x - b.x);
-                draggingIdx = pts.findIndex(p => p.x === pos.x && p.y === pos.y);
-            }
+        else if (pos.x > 0.02 && pos.x < 0.98) 
+        {
+            pts.push({ x: pos.x, y: pos.y });
+            pts.sort((a, b) => a.x - b.x);
+            draggingIdx = pts.findIndex(p => p.x === pos.x && p.y === pos.y);
         }
         rebuildAndDraw();
     }
 
-    function onMove(e) {
+    function onMove(e) 
+    {
         if (draggingIdx === -1) return;
         e.preventDefault();
         const pos = getPos(e);
         const pts = state.curves[state.activeChannel];
-        const pt = pts[draggingIdx];
+        const pt  = pts[draggingIdx];
 
-        // Lock endpoints to x=0 and x=1
         if (draggingIdx === 0) 
         {
             pt.y = pos.y; pt.x = 0;
@@ -207,13 +221,13 @@
             pt.x = clamp01(pos.x);
             pt.y = clamp01(pos.y);
         }
-
         rebuildAndDraw();
-        if (window.applyEffects) window.applyEffects();
+        if (window._scheduleApply) window._scheduleApply();
     }
 
-    function onUp(e) {
-        draggingIdx = -1;
+    function onUp()       
+    { 
+        draggingIdx = -1; 
     }
 
     function onDblClick(e) 
@@ -226,7 +240,7 @@
         {
             pts.splice(hit, 1);
             rebuildAndDraw();
-            if (window.applyEffects) window.applyEffects();
+            if (window._scheduleApply) window._scheduleApply();
         }
     }
 
@@ -242,14 +256,13 @@
         const container = document.getElementById("curves-container");
         if (!container) return;
 
-        // Channel tabs
+        // Tabs
         const tabs = document.createElement("div");
         tabs.className = "curves-tabs";
         channels.forEach(ch => {
             const btn = document.createElement("button");
             btn.textContent = ch.toUpperCase();
-            btn.className = "curves-tab" + (ch === "rgb" ? " active" : "");
-            btn.dataset.ch = ch;
+            btn.className   = "curves-tab" + (ch === "rgb" ? " active" : "");
             btn.addEventListener("click", () => {
                 state.activeChannel = ch;
                 tabs.querySelectorAll(".curves-tab").forEach(b => b.classList.remove("active"));
@@ -259,34 +272,30 @@
             tabs.appendChild(btn);
         });
 
-        // Reset button
         const resetBtn = document.createElement("button");
         resetBtn.textContent = "Reset";
         resetBtn.className = "curves-tab curves-reset";
         resetBtn.addEventListener("click", () => {
             channels.forEach(ch => {
                 state.curves[ch] = defaultPoints();
-                state.luts[ch]   = buildLUT(defaultPoints());
+                state.luts[ch] = buildLUT(defaultPoints());
             });
             drawCurve();
-            if (window.applyEffects) window.applyEffects();
+            if (window._scheduleApply) window._scheduleApply();
         });
         tabs.appendChild(resetBtn);
-
         container.appendChild(tabs);
 
-        // Canvas
         curveCanvas = document.createElement("canvas");
-        curveCanvas.width  = W;
+        curveCanvas.width = W;
         curveCanvas.height = H;
         curveCanvas.style.cursor = "crosshair";
         container.appendChild(curveCanvas);
         curveCtx = curveCanvas.getContext("2d");
 
-        // Hint
         const hint = document.createElement("p");
         hint.className = "curves-hint";
-        hint.textContent = "Click to add point · Double-click to remove";
+        hint.textContent = "Click to add · Double-click to remove";
         container.appendChild(hint);
 
         curveCanvas.addEventListener("mousedown", onDown);
@@ -300,7 +309,8 @@
         drawCurve();
     }
 
-    function applyCurves(pixels) {
+    function applyCurves(pixels) 
+    {
         const rgbLut = state.luts.rgb;
         const rLut = state.luts.r;
         const gLut = state.luts.g;
