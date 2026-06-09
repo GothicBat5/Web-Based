@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Color Playground</title>
+    <link rel="stylesheet" href="art.css">
+</head>
+<body>
+
+<header class="app-header">
+    <h1>Color Playground</h1>
+    <div class="header-actions">
+        <input type="file" id="fileInput" accept="image/*">
+        <button id="saveBtn">Save PNG</button>
+    </div>
+</header>
+
+<div class="workspace">
+
+    <!-- Left panel: controls -->
+    <aside class="panel panel-left">
+
+        <section class="panel-section">
+            <h2 class="section-title">Basic</h2>
+            <label class="slider-label">
+                <span>Brightness</span>
+                <input type="range" id="brightness" min="-100" max="100" value="0">
+                <span class="slider-val" id="brightness-val">0</span>
+            </label>
+            <label class="slider-label">
+                <span>Contrast</span>
+                <input type="range" id="contrast" min="-100" max="100" value="0">
+                <span class="slider-val" id="contrast-val">0</span>
+            </label>
+            <label class="slider-label">
+                <span>Saturation</span>
+                <input type="range" id="saturation" min="-100" max="100" value="0">
+                <span class="slider-val" id="saturation-val">0</span>
+            </label>
+        </section>
+
+        <section class="panel-section">
+            <h2 class="section-title">Curves</h2>
+            <div id="curves-container"></div>
+        </section>
+
+        <section class="panel-section">
+            <h2 class="section-title">Color Wheels</h2>
+            <div class="wheels-row">
+                <div class="wheel-item">
+                    <div id="wheel-shadows"></div>
+                    <span>Shadows</span>
+                </div>
+                <div class="wheel-item">
+                    <div id="wheel-midtones"></div>
+                    <span>Midtones</span>
+                </div>
+                <div class="wheel-item">
+                    <div id="wheel-highlights"></div>
+                    <span>Highlights</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="panel-section">
+            <h2 class="section-title">Histogram</h2>
+            <div id="histogram-container"></div>
+        </section>
+
+    </aside>
+
+    <!-- Main canvas area -->
+    <main class="canvas-area">
+        <div class="canvas-wrap">
+            <canvas id="canvas"></canvas>
+            <p class="canvas-hint" id="canvas-hint">Load an image to get started</p>
+        </div>
+    </main>
+
+</div>
+
+<script src="histogram.js"></script>
+<script src="wheels.js"></script>
+<script src="curves.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
