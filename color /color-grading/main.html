@@ -8,7 +8,7 @@
 <body>
 
 <header class="app-header">
-    <h1>Color Playground</h1>
+    <h1>Color Grading</h1>
     <div class="header-actions">
         <input type="file" id="fileInput" accept="image/*">
         <button id="saveBtn">Save PNG</button>
@@ -17,8 +17,7 @@
 
 <div class="workspace">
 
-    <!-- Left panel: controls -->
-    <aside class="panel panel-left">
+    <aside class="panel-left">
 
         <section class="panel-section">
             <h2 class="section-title">Basic</h2>
@@ -37,6 +36,11 @@
                 <input type="range" id="saturation" min="-100" max="100" value="0">
                 <span class="slider-val" id="saturation-val">0</span>
             </label>
+        </section>
+
+        <section class="panel-section">
+            <h2 class="section-title">Film Presets</h2>
+            <div id="presets-container"></div>
         </section>
 
         <section class="panel-section">
@@ -63,13 +67,17 @@
         </section>
 
         <section class="panel-section">
+            <h2 class="section-title">Vignette</h2>
+            <div id="vignette-container"></div>
+        </section>
+
+        <section class="panel-section">
             <h2 class="section-title">Histogram</h2>
             <div id="histogram-container"></div>
         </section>
 
     </aside>
 
-    <!-- Main canvas area -->
     <main class="canvas-area">
         <div class="canvas-wrap">
             <canvas id="canvas"></canvas>
@@ -82,6 +90,8 @@
 <script src="histogram.js"></script>
 <script src="wheels.js"></script>
 <script src="curves.js"></script>
+<script src="lut-presets.js"></script>
+<script src="vignette.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
