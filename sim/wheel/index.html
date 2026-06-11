@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spin the Wheel</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="app">
+
+    <!-- LEFT: Wheel -->
+    <div class="wheel-section">
+      <h1 class="app-title">SPIN<span>WHEEL</span></h1>
+
+      <div class="wheel-wrapper">
+        <div class="wheel-pointer">▼</div>
+        <canvas id="wheelCanvas" width="460" height="460"></canvas>
+      </div>
+
+      <button id="spinBtn" class="spin-btn">SPIN</button>
+
+      <!-- Result overlay -->
+      <div id="resultBanner" class="result-banner hidden">
+        <span id="resultText"></span>
+        <button id="closeResult">✕</button>
+      </div>
+    </div>
+
+    <!-- RIGHT: Controls -->
+    <div class="controls-section">
+      <h2 class="panel-title">Entries</h2>
+
+      <div class="add-entry">
+        <input type="text" id="newEntry" placeholder="Add an entry…" maxlength="40" />
+        <button id="addBtn" title="Add entry">+</button>
+      </div>
+
+      <ul id="entryList" class="entry-list"></ul>
+
+      <div class="panel-footer">
+        <button id="clearAll" class="btn-ghost">Clear all</button>
+        <span id="entryCount" class="entry-count">0 entries</span>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="spinWheel.js"></script>
+</body>
+</html>
