@@ -1,0 +1,1 @@
+Spin wheel to choose things, add and remove
