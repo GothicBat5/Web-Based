@@ -415,9 +415,8 @@ class Object3D extends EventDispatcher {
 		const children = this.children;
 
 		for ( let i = 0, l = children.length; i < l; i ++ ) // FORR LOOP !!!
-    {
+     	{
 			children[ i ].getObjectsByProperty( name, value, result );
-
 		}
 
 		return result;
@@ -464,9 +463,8 @@ class Object3D extends EventDispatcher {
 		const children = this.children;
 
 		for ( let i = 0, l = children.length; i < l; i ++ ) 
-    {
+        {
 			children[ i ].traverse( callback );
-
 		}
 
 	}
@@ -478,9 +476,9 @@ class Object3D extends EventDispatcher {
 
 		const children = this.children;
 
-		for ( let i = 0, l = children.length; i < l; i ++ ) {
+		for ( let i = 0, l = children.length; i < l; i ++ ) 
+		{
 			children[ i ].traverseVisible( callback );
-
 		}
 
 	}
