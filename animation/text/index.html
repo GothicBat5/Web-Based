@@ -1,19 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" data-theme="dark">
 <head>
-    <title>Live Text Animator</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live Text Animator</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="app">
 
-<h2>Input: </h2>
+    <header class="header">
+      <div class="header-left">
+        <span class="logo">✦</span>
+        <h1 class="title">Text Animator</h1>
+      </div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <span class="icon-sun">☀</span>
+        <span class="icon-moon">☽</span>
+      </button>
+    </header>
 
-<input type="text" id="inputBox" placeholder="Enter text here">
+    <section class="input-section">
+      <label class="input-label" for="inputBox">Type something</label>
+      <input
+        type="text"
+        id="inputBox"
+        class="text-input"
+        placeholder="Wiggle…"
+        autocomplete="off"
+        spellcheck="false"
+        maxlength="40"
+      />
+      <div class="char-count"><span id="charCount">0</span> / 40</div>
+    </section>
 
-<hr>
+    <section class="picker-section">
+      <p class="picker-label">Choose an effect: </p>
+      <div class="effect-grid" id="effectGrid">
+        <button class="effect-btn active" data-effect="wave">Wave</button>
+        <button class="effect-btn" data-effect="bounce">Bounce</button>
+        <button class="effect-btn" data-effect="spin">Spin</button>
+        <button class="effect-btn" data-effect="rainbow">Rainbow</button>
+        <button class="effect-btn" data-effect="shake">Shake</button>
+        <button class="effect-btn" data-effect="fade">Fade</button>
+        <button class="effect-btn" data-effect="zoom">Zoom</button>
+        <button class="effect-btn" data-effect="flip">Flip</button>
+      </div>
+    </section>
 
-<div id="display"></div>
+    <section class="stage-section">
+      <div class="stage" id="display" aria-live="polite">
+        <span class="stage-placeholder">Your text will animate here . . .</span>
+      </div>
+    </section>
 
-<script src="anims.js"></script>
+    <footer class="footer">2026 Copyrighted Shit * Nonesense JavaScript</footer>
+  </div>
 
+  <script src="anims.js"></script>
 </body>
 </html>
