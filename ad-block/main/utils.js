@@ -3,22 +3,31 @@ import µb from './background.js';
 
 µb.formatCount = function(count) 
 {
-    if ( typeof count !== 'number' ) { return ''; }
+    if ( typeof count !== 'number' ) 
+    { 
+        return ''; 
+    }
+    
     const s = `${count}`;
-    if ( count < 1000 ) { return s; }
-    if ( count < 10000 ) {
+    if ( count < 1000 ) 
+    { 
+        return s; 
+    }
+    if ( count < 10000 ) 
+    {
+        
         return '>' + s.slice(0,1) + 'k';
     }
-    if ( count < 100000 ) {
+    if ( count < 100000 ) 
+    {
         return s.slice(0,2) + 'k';
     }
-    if ( count < 1000000 ) {
+    if ( count < 1000000 ) 
+    {
         return s.slice(0,3) + 'k';
     }
     return s.slice(0,-6) + 'M';
 };
-
-/******************************************************************************/
 
 µb.dateNowToSensibleString = function() {
     const now = new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000);
@@ -27,63 +36,68 @@ import µb from './background.js';
                             .replace('T', '_');
 };
 
-/******************************************************************************/
-
-µb.openNewTab = function(details) {
-    if ( details.url.startsWith('logger-ui.html') ) {
-        if ( details.shiftKey ) {
-            this.changeUserSettings(
-                'alwaysDetachLogger',
-                !this.userSettings.alwaysDetachLogger
-            );
+µb.openNewTab = function(details) 
+{
+    if ( details.url.startsWith('logger-ui.html') ) 
+    {
+        if ( details.shiftKey ) 
+        {
+            this.changeUserSettings('alwaysDetachLogger',
+                !this.userSettings.alwaysDetachLogger);
         }
-        if ( this.userSettings.alwaysDetachLogger ) {
+        
+        if ( this.userSettings.alwaysDetachLogger ) 
+        {
             details.popup = this.hiddenSettings.loggerPopupType;
             const url = new URL(vAPI.getURL(details.url));
             url.searchParams.set('popup', '1');
             details.url = url.href;
             let popupLoggerBox;
+            
             try {
                 popupLoggerBox = JSON.parse(
                     vAPI.localStorage.getItem('popupLoggerBox')
                 );
-            } catch {
+            } 
+            catch {
+                // ***
             }
-            if ( popupLoggerBox !== undefined ) {
+            if ( popupLoggerBox !== undefined ) 
+            {
                 details.box = popupLoggerBox;
             }
         }
     }
     vAPI.tabs.open(details);
 };
-
-/******************************************************************************/
-
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
 
 µb.escapeRegex = function(s) {
     return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 };
-
-/******************************************************************************/
-
 // TODO: properly compare arrays
 
-µb.getModifiedSettings = function(edit, orig = {}) {
+µb.getModifiedSettings = function(edit, orig = {}) 
+{
     const out = {};
-    for ( const prop in edit ) {
-        if ( Object.hasOwn(orig, prop) && edit[prop] !== orig[prop] ) {
+    for ( const prop in edit ) 
+    {
+        if ( Object.hasOwn(orig, prop) && edit[prop] !== orig[prop] ) 
+        {
             out[prop] = edit[prop];
         }
     }
     return out;
 };
 
-µb.settingValueFromString = function(orig, name, s) {
+µb.settingValueFromString = function(orig, name, s) 
+{
     if ( typeof name !== 'string' || typeof s !== 'string' ) { return; }
     if ( Object.hasOwn(orig, name) === false ) { return; }
     let r;
-    switch ( typeof orig[name] ) {
+    
+    switch ( typeof orig[name] ) 
+    {
     case 'boolean':
         if ( s === 'true' ) {
             r = true;
@@ -97,12 +111,17 @@ import µb from './background.js';
     case 'number':
         if ( s.startsWith('0b') ) {
             r = parseInt(s.slice(2), 2);
-        } else if ( s.startsWith('0x') ) {
+        } 
+        else if ( s.startsWith('0x') ) {
             r = parseInt(s.slice(2), 16);
-        } else {
+        } 
+        else {
             r = parseInt(s, 10);
         }
-        if ( isNaN(r) ) { r = undefined; }
+        if ( isNaN(r) ) 
+        { 
+            r = undefined; 
+        }
         break;
     default:
         break;
