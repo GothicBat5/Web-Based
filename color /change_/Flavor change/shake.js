@@ -1,4 +1,3 @@
-
 const options = document.querySelectorAll('.option');
 const confirmBtn = document.getElementById('confirmBtn');
 const rippleCont = document.getElementById('ripple-container');
@@ -13,7 +12,6 @@ const rippleColors = {
 
 function spawnRipple(x, y, color) 
 {
-
   const ring = document.createElement('div');
   ring.classList.add('ripple-ring');
   ring.style.left = `${x}px`;
@@ -43,7 +41,6 @@ function burstRipples(x, y, color, count = 3)
 
 function spawnParticles(x, y, color) 
 {
-
   const symbols = ['✦', '✧', '⋆', '·', '★'];
 
   for (let i = 0; i < 8; i++) 
@@ -51,7 +48,6 @@ function spawnParticles(x, y, color)
 
     const el = document.createElement('div');
     el.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-
     const angle = (i / 8) * Math.PI * 2;
     const dist = 40 + Math.random() * 40;
     const tx = Math.cos(angle) * dist;
@@ -94,9 +90,7 @@ options.forEach(option => {
     const color = rippleColors[flavor] || '#ffffff';
 
     options.forEach(o => o.classList.remove('selected', 'clicking'));
-
     option.classList.add('selected');
-
     option.classList.add('clicking');
     option.addEventListener('animationend', () => {
       option.classList.remove('clicking');
@@ -131,10 +125,8 @@ confirmBtn.addEventListener('click', (e) => {
   const rect = confirmBtn.getBoundingClientRect();
   const cx = rect.left + rect.width  / 2;
   const cy = rect.top  + rect.height / 2;
-
   burstRipples(cx, cy, color, 6);
   spawnParticles(cx, cy, color);
-
   confirmBtn.classList.add('confirmed');
   confirmBtn.style.background = '';
   confirmBtn.querySelector('span').textContent = 'ENJOY!';
