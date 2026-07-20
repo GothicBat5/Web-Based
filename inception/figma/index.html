@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canvas</title>
+  <link rel="stylesheet" href="layout.css">
+</head>
+<body>
+
+  <div id="toolbar">
+    <div class="tool-group">
+      <button class="tool-btn active" title="Move (V)">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M1.5 1.5L6.5 12L8.2 8.2L12 6.5L1.5 1.5Z" fill="currentColor"/>
+        </svg>
+      </button>
+    </div>
+    <div class="toolbar-divider"></div>
+    <span class="toolbar-label">Figma Drag Demo</span>
+  </div>
+
+  <div id="left-panel">
+    <div class="panel-header">Layers</div>
+    <ul id="layers-list">
+      <li class="layer-item" data-id="frame-hero">
+        <svg class="layer-icon" width="10" height="10" viewBox="0 0 10 10"><rect x="0.5" y="0.5" width="9" height="9" rx="1" stroke="currentColor" fill="none"/></svg>
+        Hero Card
+      </li>
+      <li class="layer-item" data-id="frame-badge">
+        <svg class="layer-icon" width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="4.5" stroke="currentColor" fill="none"/></svg>
+        Badge
+      </li>
+      <li class="layer-item" data-id="frame-banner">
+        <svg class="layer-icon" width="10" height="10" viewBox="0 0 10 10"><rect x="0.5" y="2.5" width="9" height="5" rx="1" stroke="currentColor" fill="none"/></svg>
+        Banner
+      </li>
+    </ul>
+  </div>
+
+  <div id="canvas">
+    <div class="frame" id="frame-hero"   data-label="Hero Card" style="left:260px;top:160px;width:160px;height:130px;"></div>
+    <div class="frame" id="frame-badge"  data-label="Badge"     style="left:480px;top:200px;width:110px;height:110px;border-radius:55px;"></div>
+    <div class="frame" id="frame-banner" data-label="Banner"    style="left:340px;top:350px;width:230px;height:72px;border-radius:6px;"></div>
+  </div>
+
+  <div id="right-panel">
+    <div class="panel-header">Design</div>
+    <div class="prop-section">
+      <div class="prop-label-row">Position</div>
+      <div class="prop-grid">
+        <div class="prop-field"><span class="prop-axis">X</span><span class="prop-value" id="prop-x">—</span></div>
+        <div class="prop-field"><span class="prop-axis">Y</span><span class="prop-value" id="prop-y">—</span></div>
+      </div>
+      <div class="prop-label-row">Size</div>
+      <div class="prop-grid">
+        <div class="prop-field"><span class="prop-axis">W</span><span class="prop-value" id="prop-w">—</span></div>
+        <div class="prop-field"><span class="prop-axis">H</span><span class="prop-value" id="prop-h">—</span></div>
+      </div>
+    </div>
+    <div id="no-selection">Select an object to inspect</div>
+  </div>
+
+  <script src="figma.js"></script>
+</body>
+</html>
