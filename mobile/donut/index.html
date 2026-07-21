@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
+    <title>ASCII C Spinning Cube</title>
+    <style>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    font-family: "Courier New", monospace;
+}
+
+#screen {
+    color: #00ff88;
+    text-shadow: 0 0 6px #00ff88aa;
+    white-space: pre;
+    line-height: 1;
+    user-select: none;
+
+    /* Desktop defaults */
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+
+/* Phones */
+@media (max-width: 600px) {
+    #screen {
+        font-size: 7px;
+        letter-spacing: 0;
+        line-height: 0.95;
+    }
+}
+</style>
+    </style>
+</head>
+<body>
+    <pre id = "screen"></pre>
+    <script src = "donut.js"></script>
+    <script>
+        start();
+    </script>
+</body>
+</html>
