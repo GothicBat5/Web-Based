@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riddle Solver</title>
+    <link rel="stylesheet" href="design.css">
+    <link rel="icon" type="image/png" href="rid.jpg">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="title">Riddle - Solver</h1>
+            <p class="subtitle">Riddle Middle</p>
+        </header>
+
+        <!-- Main Game Card -->
+        <div class="game-card">
+            <!-- Score/Progress -->
+            <div class="score-bar">
+                <span class="score-label">Riddle <span id="currentRiddle">1</span> of <span id="totalRiddles">5</span></span>
+            </div>
+
+            <!-- Riddle Display -->
+            <div class="riddle-section">
+                <h2 class="riddle-title">The Riddle</h2>
+                <p class="riddle-text" id="riddleText">Loading riddle...</p>
+            </div>
+
+            <!-- Timer -->
+            <div class="timer-section">
+                <div class="timer-display">
+                    <svg class="timer-circle" viewBox="0 0 100 100">
+                        <circle class="timer-background" cx="50" cy="50" r="45"></circle>
+                        <circle class="timer-progress" cx="50" cy="50" r="45" id="timerCircle"></circle>
+                    </svg>
+                    <div class="timer-text">
+                        <span id="timerCount">60</span>
+                        <span class="timer-label">sec</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input Section -->
+            <div class="input-section">
+                <input 
+                    type="text" 
+                    id="answerInput" 
+                    class="answer-input" 
+                    placeholder="Answer: "
+                    autocomplete="off"
+                >
+                <div class="button-group">
+                    <button id="clueBtn" class="btn btn-secondary">Show Clue</button>
+                    <button id="submitBtn" class="btn btn-primary">Answer</button>
+                </div>
+            </div>
+
+            <!-- Feedback Message -->
+            <div id="feedbackMessage" class="feedback-message hidden"></div>
+        </div>
+
+        <!-- Game Over Section (Hidden initially) -->
+        <div id="gameOverSection" class="game-over-section hidden">
+            <div class="game-over-card">
+                <h2 id="gameOverTitle">Time's Up!</h2>
+                <p id="gameOverText">You solved <span id="solvedCount">0</span> out of <span id="totalCount">5</span> riddles</p>
+                <button id="restartBtn" class="btn btn-primary btn-large">Try Again</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Clue Modal Popup -->
+    <div id="clueModal" class="modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="closeClueBtn">&times;</button>
+            <h3 class="modal-title">Here's a Clue</h3>
+            <p class="modal-clue" id="clueText">Loading clue...</p>
+        </div>
+    </div>
+
+    <script src="riddle.js"></script>
+</body>
+</html>
