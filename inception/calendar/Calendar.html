@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calendar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <header class="topbar">
+    <div class="month-nav">
+      <button id="prevBtn" class="nav-btn" aria-label="Previous month">&#8592;</button>
+      <div class="month-label">
+        <span id="monthName">Month</span>
+        <span id="yearName">Year</span>
+      </div>
+      <button id="nextBtn" class="nav-btn" aria-label="Next month">&#8594;</button>
+    </div>
+
+    <div class="topbar-actions">
+      <button id="todayBtn" class="today-btn">Today</button>
+      <span id="clock" class="clock"></span>
+    </div>
+  </header>
+
+  <div class="weekday-row" id="weekdayRow"></div>
+
+  <div class="grid" id="calendarGrid"></div>
+
+</div>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalDate">
+    <div class="modal-head">
+      <h2 id="modalDate">Date</h2>
+      <button id="closeModal" class="close-btn" aria-label="Close">&times;</button>
+    </div>
+
+    <ul id="eventList" class="event-list"></ul>
+
+    <form id="eventForm" class="event-form">
+      <input type="time" id="eventTime" class="event-time">
+      <input type="text" id="eventText" class="event-text" placeholder="Add a note or event…" autocomplete="off" required>
+      <button type="submit" class="add-btn">Add</button>
+    </form>
+  </div>
+</div>
+
+<script src="date.js"></script>
+</body>
+</html>
