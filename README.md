@@ -14,20 +14,6 @@
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
-![Repo Size](https://img.shields.io/github/repo-size/GothicBath5/Web-Based?style=flat-square&color=264de4)
-![Last Commit](https://img.shields.io/github/last-commit/YOUR-USERNAME/YOUR-REPO?style=flat-square&color=e34f26)
-![Stars](https://img.shields.io/github/stars/YOUR-USERNAME/YOUR-REPO?style=flat-square&color=f7df1e)
-![Status](https://img.shields.io/badge/status-actively%20evolving-brightgreen?style=flat-square)
-
-<p>
-  <a href="#-about">About</a> •
-  <a href="#-tech-stack">Tech Stack</a> •
-  <a href="#-projects--experiments">Projects</a> •
-  <a href="#-repository-structure">Structure</a> •
-  <a href="#-getting-started">Getting Started</a> •
-  <a href="#-roadmap">Roadmap</a>
-</p>
-
 </div>
 
 ---
@@ -38,61 +24,6 @@ A growing collection of **web-based projects, experiments, and creative explorat
 
 This repository is a space for **learning, building, and experimenting**. Rather than focusing on a single application, it brings together everything from small experiments to more developed interactive experiences, all of which run directly in your browser.
 ---
-
-## 🧰 Tech Stack
-
-<div align="center">
-
-<table>
-  <tr>
-    <td align="center" width="200">
-      <img src="https://cdn.simpleicons.org/html5/E34F26" width="48" height="48" alt="HTML5" /><br/>
-      <b>HTML</b><br/>
-      <sub>Structure &amp; content</sub>
-    </td>
-    <td align="center" width="200">
-      <img src="https://cdn.simpleicons.org/css3/1572B6" width="48" height="48" alt="CSS3" /><br/>
-      <b>CSS</b><br/>
-      <sub>Styling, layouts &amp; visual design</sub>
-    </td>
-    <td align="center" width="200">
-      <img src="https://cdn.simpleicons.org/javascript/F7DF1E" width="48" height="48" alt="JavaScript" /><br/>
-      <b>JavaScript</b><br/>
-      <sub>Interactivity, logic &amp; behavior</sub>
-    </td>
-  </tr>
-</table>
-
-</div>
-
----
-
-### Projects & Experiments
-
-A collection of browser-based projects and explorations. Click a card's link to jump to its folder.
-
-<table>
-  <tr>
-    <td width="50%" valign="top">
-      <h3>🐍 Snake</h3>
-      <p>The classic arcade game, rebuilt from scratch with vanilla JavaScript and the Canvas/DOM.</p>
-      <p>
-        <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JS" />
-        <img src="https://img.shields.io/badge/Game-Interactive-ff69b4?style=flat-square" alt="Game" />
-      </p>
-      <p><a href="./snake"><b>📂 View project →</b></a></p>
-    </td>
-    <td width="50%" valign="top">
-      <h3>🧪 More experiments</h3>
-      <p>Small UI studies, CSS effects, and interactive ideas live in <code>src/</code>.</p>
-      <p>
-        <img src="https://img.shields.io/badge/CSS-1572B6?style=flat-square&logo=css3&logoColor=white" alt="CSS" />
-        <img src="https://img.shields.io/badge/Experiments-Ongoing-orange?style=flat-square" alt="Experiments" />
-      </p>
-      <p><a href="./src"><b>📂 Browse experiments →</b></a></p>
-    </td>
-  </tr>
-</table>
 
 <details>
 <summary><b>📸 Project previews (click to expand)</b></summary>
