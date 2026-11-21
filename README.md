@@ -18,7 +18,7 @@
 
 ---
 
-## ✨ About
+# About
 
 A growing collection of **web-based projects, experiments, and creative explorations** built on the foundations of HTML, CSS, and JavaScript.
 
@@ -26,7 +26,7 @@ This repository is a space for **learning, building, and experimenting**. Rather
 ---
 
 <details>
-<summary><b>📸 Project previews (click to expand)</b></summary>
+<summary><b>Project previews (click to expand)</b></summary>
 <br/>
 
 Add screenshots or GIFs of your projects here.
@@ -50,10 +50,10 @@ flowchart LR
 
 ---
 
-## 📈 Project Status
+## Project Status
 
 This repository is **continuously evolving**. New projects, improvements, experiments, and learning materials may be added over time.
 
-## 🤝 Contributing
+## Contributing!
 
 Suggestions and ideas are welcome! Feel free to [open an issue](https://github.com/GothicBath5/Web-Based/issues) or fork the repo and try your own spin on an experiment.
